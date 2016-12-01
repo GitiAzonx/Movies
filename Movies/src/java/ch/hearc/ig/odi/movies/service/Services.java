@@ -104,7 +104,7 @@ public class Services implements Serializable{
      * Si l'instance Person passée en paramètre ne contient pas d'ID, crée une nouvelle personne
      * Si un ID est présent, effectue une modification.
      * @param person La personne à insérer ou à mettre à jour
-     * @throws ch.hearc.ig.odi.moviemanager.exception.NullParameterException Levée si le paramètre reçu est null
+     * @throws ch.hearc.ig.odi.movies.exception.NullParameterException Levée si le paramètre reçu est null
      */
     public void savePerson(Person person) throws NullParameterException{
         if(person == null){
@@ -123,7 +123,7 @@ public class Services implements Serializable{
      * Si l'instance Movie passée en paramètre ne contient pas d'ID, crée un nouveau film
      * Si un ID est présent, effectue une modification
      * @param movie Le film à insérer ou à mettre à jour
-     * @throws ch.hearc.ig.odi.moviemanager.exception.NullParameterException Levée si le paramètre reçu est null
+     * @throws ch.hearc.ig.odi.movies.exception.NullParameterException Levée si le paramètre reçu est null
      */
     public void saveMovie(Movie movie) throws NullParameterException{
         if(movie == null){

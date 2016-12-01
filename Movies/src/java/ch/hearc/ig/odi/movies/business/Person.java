@@ -5,6 +5,8 @@
  */
 package ch.hearc.ig.odi.movies.business;
 
+import ch.hearc.ig.odi.movies.exception.NullParameterException;
+import ch.hearc.ig.odi.movies.exception.UniqueException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +64,30 @@ public class Person {
         this.movies = movies;
     }
     
-    public void addMovie(Movie movie){
-        this.movies.add(movie);
+    public void addMovie(Movie movie)throws UniqueException, NullParameterException{
+        if(movie == null){
+            throw new NullParameterException("Movie is null");
+        }           
+        
+        if(movies.contains(movie)){       
+            throw new UniqueException("Error, the person has already seen this movie");            
+        }
+        
+        movie.addPerson(this);
+        movies.add(movie);
     }
-           
+    
+    public void removeMovie(Movie movie) throws NullParameterException, UniqueException{
+        if(movie == null){
+            throw new NullParameterException("Movie is null");
+        }           
+        
+        boolean success = movies.remove(movie); 
+        
+        if(!success){
+            throw new UniqueException("The movie doestn't exist in this list");
+        }
+                
+        movie.removePerson(this);
+    }
 }
