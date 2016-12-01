@@ -61,5 +61,9 @@ public class Person {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+    
+    public void addMovie(Movie movie){
+        this.movies.add(movie);
+    }
            
 }
