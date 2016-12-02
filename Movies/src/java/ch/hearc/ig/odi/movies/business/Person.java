@@ -5,6 +5,8 @@
  */
 package ch.hearc.ig.odi.movies.business;
 
+import ch.hearc.ig.odi.movies.exception.NullParameterException;
+import ch.hearc.ig.odi.movies.exception.UniqueException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,5 +63,12 @@ public class Person {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
-           
+    
+    public void addMovie(Movie movie)throws UniqueException, NullParameterException{
+        movies.add(movie);            
+    }
+    
+    public void removeMovie(Movie movie){
+        movies.remove(movie);
+    }
 }
