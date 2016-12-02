@@ -62,29 +62,5 @@ public class Movie {
     public void setPeople(List<Person> people) {
         this.people = people;
     }   
-   
-    public void addPerson(Person person)throws UniqueException, NullParameterException{        
-        if(person == null){
-            throw new NullParameterException("Person is null");
-        }           
-        
-        if(people.contains(person)){
-            throw new UniqueException("Error, this movie has already been seen by this person");
-        }
-        
-        people.add(person);
-    }
-    
-    public void removePerson(Person person) throws NullParameterException, UniqueException{
-        if(person == null){
-            throw new NullParameterException("Person is null");
-        }           
-        
-        boolean success = people.remove(person);   
-        
-        if(!success){
-            throw new UniqueException("Error, this movie has already been seen by this person");
-        }
-    }
-    
+       
 }

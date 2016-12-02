@@ -65,29 +65,10 @@ public class Person {
     }
     
     public void addMovie(Movie movie)throws UniqueException, NullParameterException{
-        if(movie == null){
-            throw new NullParameterException("Movie is null");
-        }           
-        
-        if(movies.contains(movie)){       
-            throw new UniqueException("Error, the person has already seen this movie");            
-        }
-        
-        movie.addPerson(this);
-        movies.add(movie);
+        movies.add(movie);            
     }
     
-    public void removeMovie(Movie movie) throws NullParameterException, UniqueException{
-        if(movie == null){
-            throw new NullParameterException("Movie is null");
-        }           
-        
-        boolean success = movies.remove(movie); 
-        
-        if(!success){
-            throw new UniqueException("The movie doestn't exist in this list");
-        }
-                
-        movie.removePerson(this);
+    public void removeMovie(Movie movie){
+        movies.remove(movie);
     }
 }
