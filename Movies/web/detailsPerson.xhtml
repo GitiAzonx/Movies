@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <f:metadata>
+            <f:viewParam name="id" value="#{personBean.id}"/>
+            <f:viewAction action="#{personBean.initEntity()}"/>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:panelGrid border="0" columns="2">
+            <h:outputLabel value="ID: "/>
+            <h:outputText value="#{personBean.currentPerson.id}"/>
+            <h:outputLabel value="Prénom: "/>
+            <h:outputText value="#{personBean.currentPerson.id}"/>
+            <h:outputLabel value="Nom: "/>
+            <h:outputText value="#{personBean.currentPerson.id}"/>
+        </h:panelGrid>
+        <h1>Liste des films de la personne</h1>
+        <h:dataTable value="#{personBean.currentPerson.movies}" var="movie">
+            <h:column>
+                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <h:outputText value="#{movie.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Nom" /></f:facet>
+                <h:outputText value="#{movie.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Producteur" /></f:facet>
+                <h:outputText value="#{movie.producer}" />
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+
