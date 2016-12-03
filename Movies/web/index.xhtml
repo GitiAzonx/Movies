@@ -28,6 +28,26 @@
                 <h:outputText value="#{person.movies.size()}" />
             </h:column> 
         </h:dataTable>
+        
+        <h1>Liste des films</h1>
+        <h:dataTable value="#{indexBean.movies}" var="movie">
+            <h:column>
+                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <h:outputText value="#{movie.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Nom" /></f:facet>
+                <h:outputText value="#{movie.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Producteur" /></f:facet>
+                <h:outputText value="#{movie.producer}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Nombre de personnes" /></f:facet>
+                <h:outputText value="#{movie.people.size()}" />
+            </h:column> 
+        </h:dataTable>
     </h:body>
 </html>
 
