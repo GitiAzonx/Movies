@@ -46,3 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /Movies/nbproject/private/
+/Movies/build/
+/JavaApplication35/nbproject/private/
+/JavaApplication35/build/
+/Movies/dist/
