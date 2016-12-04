@@ -7,6 +7,7 @@ package ch.hearc.ig.odi.movies.presentation.bean;
 
 import ch.hearc.ig.odi.movies.business.Movie;
 import ch.hearc.ig.odi.movies.business.Person;
+import ch.hearc.ig.odi.movies.exception.InvalidParameterException;
 import ch.hearc.ig.odi.movies.exception.NullParameterException;
 import ch.hearc.ig.odi.movies.exception.UniqueException;
 import ch.hearc.ig.odi.movies.service.Services;
@@ -87,4 +88,8 @@ public class PersonBean implements Serializable {
         return moviesNotAdded;
     }
     
+    public String removeMovie(Movie movie) throws NullParameterException, InvalidParameterException{
+        services.removeMovieFromPerson(this.currentPerson,movie);
+        return "personDetails.xhtml";
+    }
 }
