@@ -65,6 +65,13 @@ public class Person {
     }
     
     public void addMovie(Movie movie)throws UniqueException, NullParameterException{
+        if(movie == null){
+            throw new NullParameterException("Movie is null");
+        }
+        
+        if(movies.contains(movie)){
+            throw new UniqueException("Error, the movie the movie is already in the list");
+        }
         movies.add(movie);            
     }
     
