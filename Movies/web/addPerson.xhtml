@@ -36,9 +36,9 @@
                 <h:inputText value="#{personBean.currentPerson.lastName}"/>                
             </h:panelGrid>           
             <h:commandButton id="reset" value="Réinitialiser" type="reset" />
-            <h:commandButton id="submit" value="Valider" action="#{personBean.save()}" />
-            <h:commandButton id="cancel" value="Annuler" action="/index.xhtml" immediate="true"/>
-        </h:form>
+            <h:commandButton id="submit" value="Valider" action="#{personBean.save()}" type="submit" />
+            <h:button id="cancel" value="Annuler" outcome="index.xhtml"/>  
+        </h:form>   
     </h:body>
 </html>
 
