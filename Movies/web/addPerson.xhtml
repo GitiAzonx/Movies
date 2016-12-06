@@ -10,13 +10,29 @@
         </f:metadata>
     </h:head>
     <h:body>
+        <h:panelGroup id="title">
+            <h:panelGroup rendered="#{personBean.id == null}">
+                <h1>Ajouter</h1>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{personBean.id != null}">
+                <h1>Editer</h1>
+            </h:panelGroup>
+        </h:panelGroup>
         <h:form>
             <h:panelGrid border="0" columns="2">
-                <h:outputLabel value="ID"/>
-                <h:inputText readonly="true" disabled="true" value="#{personBean.currentPerson.id}"/>
+                <h:panelGroup id="idOut">
+                    <h:panelGroup rendered="#{personBean.id != null}">
+                        <h:outputLabel value="ID"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup id="idIn">
+                    <h:panelGroup rendered="#{personBean.id != null}">
+                        <h:inputText readonly="true" disabled="true" value="#{personBean.currentPerson.id}"/>
+                    </h:panelGroup>
+                </h:panelGroup>
                 <h:outputLabel value="Prénom"/>
                 <h:inputText value="#{personBean.currentPerson.firstName}"/>
-                <h:outputLabel value="Prénom"/>
+                <h:outputLabel value="Nom"/>
                 <h:inputText value="#{personBean.currentPerson.lastName}"/>                
             </h:panelGrid>           
             <h:commandButton id="reset" value="Réinitialiser" type="reset" />
