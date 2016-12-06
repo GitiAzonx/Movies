@@ -11,6 +11,7 @@ import ch.hearc.ig.odi.movies.service.Services;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
 
