@@ -19,6 +19,10 @@
                 <h:outputLabel value="Nom: "/>
                 <h:outputText value="#{personBean.currentPerson.lastName}"/>
             </h:panelGrid>
+            <h:button outcome="addPerson.xhtml" value="Editer">
+                <f:param name="id" value="#{personBean.currentPerson.id}"/>
+            </h:button>
+                
             <h1>Liste des films de la personne</h1>
             <h:dataTable value="#{personBean.currentPerson.movies}" var="movie">
                 <h:column>

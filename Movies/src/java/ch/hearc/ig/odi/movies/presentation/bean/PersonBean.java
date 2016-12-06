@@ -32,7 +32,7 @@ public class PersonBean implements Serializable {
 
     private Person currentPerson;
     private Long id;
-    
+
     private Movie addMovie;
 
     /**
@@ -72,24 +72,33 @@ public class PersonBean implements Serializable {
     public void setAddMovie(Movie addMovie) {
         this.addMovie = addMovie;
     }
-    
-    public String addMovieToPerson(){
-        try{
-            services.addMovieToPerson(currentPerson,addMovie);
-        }catch(UniqueException | NullParameterException e){
+
+    public String save(){
+        try {
+            services.savePerson(currentPerson);
+        } catch (NullParameterException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
-        }        
+        }
+        return "detailsPerson.xhtml?id=" + currentPerson.getId() + "&faces-redirect=true";
+    }
+
+    public String addMovieToPerson() {
+        try {
+            services.addMovieToPerson(currentPerson, addMovie);
+        } catch (UniqueException | NullParameterException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
+        }
         return "personDetails.xhtml";
     }
-    
-    public List<Movie> getMoviesNotAdded(){
+
+    public List<Movie> getMoviesNotAdded() {
         List<Movie> moviesNotAdded = services.getMoviesList();
         moviesNotAdded.removeAll(currentPerson.getMovies());
         return moviesNotAdded;
     }
-    
-    public String removeMovie(Movie movie) throws NullParameterException, InvalidParameterException{
-        services.removeMovieFromPerson(this.currentPerson,movie);
+
+    public String removeMovie(Movie movie) throws NullParameterException, InvalidParameterException {
+        services.removeMovieFromPerson(this.currentPerson, movie);
         return "personDetails.xhtml";
     }
 }

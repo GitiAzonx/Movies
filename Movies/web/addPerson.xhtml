@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <f:metadata>
+            <f:viewParam name="id" value="#{personBean.id}"/>
+            <f:viewAction action="#{personBean.initEntity()}"/>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid border="0" columns="2">
+                <h:outputLabel value="ID"/>
+                <h:inputText readonly="true" disabled="true" value="#{personBean.currentPerson.id}"/>
+                <h:outputLabel value="Prénom"/>
+                <h:inputText value="#{personBean.currentPerson.firstName}"/>
+                <h:outputLabel value="Prénom"/>
+                <h:inputText value="#{personBean.currentPerson.lastName}"/>                
+            </h:panelGrid>           
+            <h:commandButton id="reset" value="Réinitialiser" type="reset" />
+            <h:commandButton id="submit" value="Valider" action="#{personBean.save()}" />
+            <h:commandButton id="cancel" value="Annuler" action="/index.xhtml" immediate="true"/>
+        </h:form>
+    </h:body>
+</html>
+
