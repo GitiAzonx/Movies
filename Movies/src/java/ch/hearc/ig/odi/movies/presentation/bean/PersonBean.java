@@ -82,6 +82,10 @@ public class PersonBean implements Serializable {
         return "detailsPerson.xhtml?id=" + currentPerson.getId() + "&faces-redirect=true";
     }
 
+    /**
+     * Ajoute le champ "addMovie" à la liste de films de la personne
+     * @return Retourne la page de détails de la personne
+     */
     public String addMovieToPerson() {
         try {
             services.addMovieToPerson(currentPerson, addMovie);
@@ -90,15 +94,28 @@ public class PersonBean implements Serializable {
         }
         return "personDetails.xhtml";
     }
-
+    
+    /**
+     * Retourne la liste que la personne n'a pas vu.
+     * @return La liste que la personne n'a pas vu.
+     */
     public List<Movie> getMoviesNotAdded() {
         List<Movie> moviesNotAdded = services.getMoviesList();
         moviesNotAdded.removeAll(currentPerson.getMovies());
         return moviesNotAdded;
     }
-
-    public String removeMovie(Movie movie) throws NullParameterException, InvalidParameterException {
-        services.removeMovieFromPerson(this.currentPerson, movie);
+    
+    /**
+     * Supprime le film passé en paramètre de la liste des films de la personne.
+     * @param movie Le film à supprimer
+     * @return Retourne la page de détails de la personne
+     */
+    public String removeMovie(Movie movie){
+        try{
+            services.removeMovieFromPerson(this.currentPerson, movie);
+        }catch(InvalidParameterException | NullParameterException e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
+        }        
         return "personDetails.xhtml";
     }
 }

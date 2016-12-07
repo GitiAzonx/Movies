@@ -31,6 +31,14 @@ public class MovieBean {
      */
     public MovieBean() {
     }
+    
+    public void initEntity() {
+        if (id == null) {
+            currentMovie = new Movie();
+        } else {
+            currentMovie = services.getMovieWithId(id);
+        }
+    }
 
     public Movie getCurrentMovie() {
         return currentMovie;

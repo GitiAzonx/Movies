@@ -64,6 +64,7 @@ public class Person {
         this.movies = movies;
     }
     
+    
     public void addMovie(Movie movie)throws UniqueException, NullParameterException{
         if(movie == null){
             throw new NullParameterException("Movie is null");
