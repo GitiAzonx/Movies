@@ -73,10 +73,13 @@ public class Person {
         if(movies.contains(movie)){
             throw new UniqueException("Error, the movie the movie is already in the list");
         }
+        
+        movie.addPerson(this);
         movies.add(movie);            
     }
     
-    public void removeMovie(Movie movie){
-        movies.remove(movie);
+    public void removeMovie(Movie movie) throws NullParameterException{
+        movie.removePerson(this);
+        movies.remove(movie);                
     }
 }

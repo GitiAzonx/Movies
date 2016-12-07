@@ -8,6 +8,7 @@ package ch.hearc.ig.odi.movies.presentation.bean;
 import ch.hearc.ig.odi.movies.business.Movie;
 import ch.hearc.ig.odi.movies.business.Person;
 import ch.hearc.ig.odi.movies.service.Services;
+import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -18,7 +19,7 @@ import javax.inject.Inject;
  */
 @Named(value = "movieBean")
 @ViewScoped
-public class MovieBean {
+public class MovieBean implements Serializable{
 
     @Inject
     Services services;
