@@ -26,6 +26,7 @@ public class Movie {
     }
 
     public Movie(Long id, String name, String producer) {
+        this();
         this.id = id;
         this.name = name;
         this.producer = producer;
@@ -63,4 +64,21 @@ public class Movie {
         this.people = people;
     }   
        
+    public void addPerson(Person person) throws UniqueException, NullParameterException{
+        if(person == null){
+            throw new NullParameterException("Person is null");
+        }        
+        if(people.contains(person)){
+            throw new UniqueException("This movie already contains that person");
+        }
+        
+        people.add(person);
+    }
+    
+    public void removePerson(Person person) throws NullParameterException{
+        if(person == null){
+            throw new NullParameterException("Person is null");
+        }                
+        people.remove(person);        
+    }
 }
