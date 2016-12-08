@@ -7,8 +7,11 @@ package ch.hearc.ig.odi.movies.presentation.bean;
 
 import ch.hearc.ig.odi.movies.business.Movie;
 import ch.hearc.ig.odi.movies.business.Person;
+import ch.hearc.ig.odi.movies.exception.NullParameterException;
 import ch.hearc.ig.odi.movies.service.Services;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -57,4 +60,12 @@ public class MovieBean implements Serializable{
         this.id = id;
     }   
     
+    public String save(){
+        try {
+            services.saveMovie(currentMovie);
+        } catch (NullParameterException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
+        }
+        return "detailsMovie.xhtml?id=" + currentMovie.getId() + "&faces-redirect=true";
+    }
 }

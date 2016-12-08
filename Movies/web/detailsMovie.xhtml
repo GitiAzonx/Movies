@@ -19,9 +19,9 @@
                 <h:outputLabel value="Producteur: "/>
                 <h:outputText value="#{movieBean.currentMovie.producer}"/>
             </h:panelGrid>
-            <!-- <h:button outcome="addPerson.xhtml" value="Editer">
-                <f:param name="id" value="{personBean.currentPerson.id}"/>
-            </h:button>-->
+            <h:button outcome="addMovie.xhtml" value="Editer">
+                <f:param name="id" value="#{movieBean.currentMovie.id}"/>
+            </h:button>
 
             <h1>Liste des personnes qui ont vu le film</h1>
             <h:dataTable value="#{movieBean.currentMovie.people}" var="person">
