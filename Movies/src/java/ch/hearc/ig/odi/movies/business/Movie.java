@@ -5,6 +5,7 @@
  */
 package ch.hearc.ig.odi.movies.business;
 
+import ch.hearc.ig.odi.movies.exception.InvalidParameterException;
 import ch.hearc.ig.odi.movies.exception.NullParameterException;
 import ch.hearc.ig.odi.movies.exception.UniqueException;
 import java.util.ArrayList;
@@ -64,21 +65,35 @@ public class Movie {
         this.people = people;
     }   
        
+    /**
+     * Ajoute une personnes à la liste de personnes qui ont vu le film.
+     * @param person La personne à ajouter
+     * @throws UniqueException Dans le cas où la personne est déjà dans la liste
+     * @throws NullParameterException Dans le cas où le paramètre person est null
+     */
     public void addPerson(Person person) throws UniqueException, NullParameterException{
         if(person == null){
             throw new NullParameterException("Person is null");
         }        
         if(people.contains(person)){
-            throw new UniqueException("This movie already contains that person");
-        }
-        
+            throw new UniqueException("That person has already seen that movie");
+        }        
         people.add(person);
     }
     
-    public void removePerson(Person person) throws NullParameterException{
+    /**
+     * Supprime la personne passée en paramètre de la liste des personnes qui ont vu le film.
+     * @param person La personne à supprimer de la liste
+     * @throws NullParameterException Dans le cas où le paramètre person est null
+     * @throws InvalidParameterException Dans le cas où as la personne passée en paramètre.
+     */
+    public void removePerson(Person person) throws NullParameterException, InvalidParameterException{
         if(person == null){
             throw new NullParameterException("Person is null");
         }                
-        people.remove(person);        
+        if(!people.remove(person)){
+            throw new InvalidParameterException("That person already is not in the list");
+        }        
     }
+    
 }

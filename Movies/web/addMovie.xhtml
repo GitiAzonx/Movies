@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <f:metadata>
+            <f:viewParam name="id" value="#{movieBean.id}"/>
+            <f:viewAction action="#{movieBean.initEntity()}"/>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="title">
+            <h:panelGroup rendered="#{movieBean.id == null}">
+                <h1>Ajouter</h1>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{movieBean.id != null}">
+                <h1>Editer</h1>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:form>
+            <h:panelGrid border="0" columns="2">
+                <h:panelGroup id="idOut">
+                    <h:panelGroup rendered="#{movieBean.id != null}">
+                        <h:outputLabel value="ID"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup id="idIn">
+                    <h:panelGroup rendered="#{movieBean.id != null}">
+                        <h:inputText readonly="true" disabled="true" value="#{movieBean.currentMovie.id}"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:outputLabel value="Nom"/>
+                <h:inputText value="#{movieBean.currentMovie.name}"/>
+                <h:outputLabel value="Producteur"/>
+                <h:inputText value="#{movieBean.currentMovie.producer}"/>                
+            </h:panelGrid>           
+            <h:commandButton id="reset" value="Réinitialiser" type="reset" />
+            <h:commandButton id="submit" value="Valider" action="#{movieBean.save()}" type="submit" />
+            <h:button id="cancel" value="Annuler" outcome="index.xhtml"/>  
+        </h:form>   
+    </h:body>
+</html>

@@ -96,8 +96,8 @@ public class PersonBean implements Serializable {
     }
     
     /**
-     * Retourne la liste que la personne n'a pas vu.
-     * @return La liste que la personne n'a pas vu.
+     * Retourne la liste des films que la personne n'a pas vu.
+     * @return La liste des films que la personne n'a pas vu.
      */
     public List<Movie> getMoviesNotAdded() {
         List<Movie> moviesNotAdded = services.getMoviesList();

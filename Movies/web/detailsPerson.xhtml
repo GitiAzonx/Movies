@@ -27,15 +27,21 @@
             <h:dataTable value="#{personBean.currentPerson.movies}" var="movie">
                 <h:column>
                     <f:facet name="header"><h:outputText value="ID" /></f:facet>
-                    <h:outputText value="#{movie.id}" />
+                    <h:link value="#{movie.id}" outcome="detailsMovie.xhtml" >
+                    <f:param name="id" value="#{movie.id}" />
+                    </h:link>
                 </h:column>
                 <h:column>
                     <f:facet name="header"><h:outputText value="Nom" /></f:facet>
-                    <h:outputText value="#{movie.name}" />
+                    <h:link value="#{movie.name}" outcome="detailsMovie.xhtml" >
+                        <f:param name="id" value="#{movie.id}" />
+                    </h:link>
                 </h:column>
                 <h:column>
                     <f:facet name="header"><h:outputText value="Producteur" /></f:facet>
-                    <h:outputText value="#{movie.producer}" />
+                    <h:link value="#{movie.producer}" outcome="detailsMovie.xhtml" >
+                        <f:param name="id" value="#{movie.id}" />
+                    </h:link>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
