@@ -5,7 +5,6 @@
  */
 package ch.hearc.ig.odi.movies.business;
 
-import ch.hearc.ig.odi.movies.exception.InvalidParameterException;
 import ch.hearc.ig.odi.movies.exception.NullParameterException;
 import ch.hearc.ig.odi.movies.exception.UniqueException;
 import java.util.ArrayList;
@@ -72,20 +71,15 @@ public class Person {
         }
         
         if(movies.contains(movie)){
-            throw new UniqueException("Error, the movie is already in the list");
+            throw new UniqueException("Error, the movie the movie is already in the list");
         }
         
         movie.addPerson(this);
         movies.add(movie);            
     }
     
-    public void removeMovie(Movie movie) throws NullParameterException, InvalidParameterException{
-        if(movie == null){
-            throw new NullParameterException("Movie is null");
-        }
-        if(movies.remove(movie)){
-            throw new InvalidParameterException("That movie doesn't appear in the list");
-        }
-        movie.removePerson(this);               
+    public void removeMovie(Movie movie) throws NullParameterException{
+        movie.removePerson(this);
+        movies.remove(movie);                
     }
 }
