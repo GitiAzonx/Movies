@@ -92,7 +92,7 @@ public class PersonBean implements Serializable {
         } catch (UniqueException | NullParameterException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
         }
-        return "personDetails.xhtml";
+        return "done";
     }
     
     /**
@@ -116,6 +116,6 @@ public class PersonBean implements Serializable {
         }catch(InvalidParameterException | NullParameterException e){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
         }        
-        return "personDetails.xhtml";
+        return "done";
     }
 }
