@@ -9,58 +9,58 @@
         </f:metadata>
     </h:head>
     <h:body>
-        <h1>Liste des personnes</h1>
+        <h1>#{msg['index.people.title']}</h1>
         <h:dataTable value="#{indexBean.people}" var="person">
             <h:column>
-                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['person.id']}" /></f:facet>
                 <h:link value="#{person.id}" outcome="detailsPerson.xhtml" >
                     <f:param name="id" value="#{person.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Prénom" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['person.firstName']}" /></f:facet>
                 <h:link value="#{person.firstName}" outcome="detailsPerson.xhtml" >
                     <f:param name="id" value="#{person.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Nom" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['person.lastName']}" /></f:facet>
                 <h:link value="#{person.lastName}" outcome="detailsPerson.xhtml" >
                     <f:param name="id" value="#{person.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Nombre de films" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['person.movies']}" /></f:facet>
                 <h:outputText value="#{person.movies.size()}" />
             </h:column> 
         </h:dataTable>
-        <h:button id="addPerson" value="Ajouter" outcome="addPerson.xhtml"/>  
-        <h1>Liste des films</h1>
+        <h:button id="addPerson" value="#{msg['button.label.add']}" outcome="addPerson.xhtml"/>  
+        <h1>#{msg['index.movies.title']}</h1>
         <h:dataTable value="#{indexBean.movies}" var="movie">
             <h:column>
-                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['movie.id']}" /></f:facet>
                 <h:link value="#{movie.id}" outcome="detailsMovie.xhtml" >
                     <f:param name="id" value="#{movie.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Nom" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['movie.name']}" /></f:facet>
                 <h:link value="#{movie.name}" outcome="detailsMovie.xhtml" >
                     <f:param name="id" value="#{movie.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Producteur" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['movie.producer']}" /></f:facet>
                 <h:link value="#{movie.producer}" outcome="detailsMovie.xhtml" >
                     <f:param name="id" value="#{movie.id}" />
                 </h:link>
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Nombre de personnes" /></f:facet>
+                <f:facet name="header"><h:outputText value="#{msg['movie.people']}" /></f:facet>
                 <h:outputText value="#{movie.people.size()}" />
             </h:column> 
         </h:dataTable>
-        <h:button id="addPerson" value="Ajouter" outcome="addMovie.xhtml"/>  
+        <h:button id="addPerson" value="#{msg['button.label.add']}" outcome="addMovie.xhtml"/>  
     </h:body>
 </html>
 
