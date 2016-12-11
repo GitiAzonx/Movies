@@ -7,8 +7,8 @@
     <application>
         <locale-config>
             <default-locale>en</default-locale>
-            <supported-locale>fr</supported-locale>
             <supported-locale>en</supported-locale>
+            <supported-locale>fr</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>ch.hearc.ig.odi.movies.presentation.bundle.Messages</base-name>

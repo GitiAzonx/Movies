@@ -12,17 +12,17 @@
     <h:body>
         <h:panelGroup id="title">
             <h:panelGroup rendered="#{movieBean.id == null}">
-                <h1>Ajouter</h1>
+                <h1>#{msg['movie.create.form.title']}</h1>
             </h:panelGroup>
             <h:panelGroup rendered="#{movieBean.id != null}">
-                <h1>Editer</h1>
+                <h1>#{msg['movie.edit.form.title']}</h1>
             </h:panelGroup>
         </h:panelGroup>
         <h:form>
             <h:panelGrid border="0" columns="2">
                 <h:panelGroup id="idOut">
                     <h:panelGroup rendered="#{movieBean.id != null}">
-                        <h:outputLabel value="ID"/>
+                        <h:outputLabel value="#{msg['person.id']}"/>
                     </h:panelGroup>
                 </h:panelGroup>
                 <h:panelGroup id="idIn">
@@ -30,14 +30,14 @@
                         <h:inputText readonly="true" disabled="true" value="#{movieBean.currentMovie.id}"/>
                     </h:panelGroup>
                 </h:panelGroup>
-                <h:outputLabel value="Nom"/>
+                <h:outputLabel value="#{msg['movie.name']}"/>
                 <h:inputText value="#{movieBean.currentMovie.name}"/>
-                <h:outputLabel value="Producteur"/>
+                <h:outputLabel value="#{msg['movie.producer']}"/>
                 <h:inputText value="#{movieBean.currentMovie.producer}"/>                
             </h:panelGrid>           
-            <h:commandButton id="reset" value="Réinitialiser" type="reset" />
-            <h:commandButton id="submit" value="Valider" action="#{movieBean.save()}" type="submit" />
-            <h:button id="cancel" value="Annuler" outcome="index.xhtml"/>  
+            <h:commandButton id="reset" value="#{msg['button.label.reset']}" type="reset" />
+            <h:commandButton id="submit" value="#{msg['button.label.submit']}" action="#{movieBean.save()}" type="submit" />
+            <h:button id="cancel" value="#{msg['button.label.cancel']}" outcome="index.xhtml"/>  
         </h:form>   
     </h:body>
 </html>
