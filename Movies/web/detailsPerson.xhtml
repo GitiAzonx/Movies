@@ -53,7 +53,8 @@
                             <f:facet name="header">
                                 <h:outputText value="" />
                             </f:facet>
-                            <h:commandLink value="Supprimer">
+                            <h:commandLink>
+                                <h:graphicImage url="/resources/images/deleteRed.png" width="20px"/>
                                 <f:ajax listener="#{personBean.removeMovie(movie)}" render="@form" />
                             </h:commandLink>
                         </h:column>
