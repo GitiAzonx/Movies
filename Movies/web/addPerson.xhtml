@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <f:metadata>
             <f:viewParam name="id" value="#{personBean.id}"/>
@@ -10,35 +11,42 @@
         </f:metadata>
     </h:head>
     <h:body>
-        <h:panelGroup id="title">
-            <h:panelGroup rendered="#{personBean.id == null}">
-                <h1>#{msg['person.create.form.title']}</h1>
-            </h:panelGroup>
-            <h:panelGroup rendered="#{personBean.id != null}">
-                <h1>#{msg['person.edit.form.title']}</h1>
-            </h:panelGroup>
-        </h:panelGroup>
-        <h:form>
-            <h:panelGrid border="0" columns="2">
-                <h:panelGroup id="idOut">
+        <ui:composition template="/main.xhtml">
+            <ui:define name="top">#{msg['person.create.form.title']}</ui:define>       
+            <ui:define name="bottom">#{msg['pages.bottom']}</ui:define> 
+
+            <ui:define name="content">
+                <h:panelGroup id="title">
+                    <h:panelGroup rendered="#{personBean.id == null}">
+                        <h1>#{msg['person.create.form.title']}</h1>
+                    </h:panelGroup>
                     <h:panelGroup rendered="#{personBean.id != null}">
-                        <h:outputLabel value="#{msg['person.id']}"/>
+                        <h1>#{msg['person.edit.form.title']}</h1>
                     </h:panelGroup>
                 </h:panelGroup>
-                <h:panelGroup id="idIn">
-                    <h:panelGroup rendered="#{personBean.id != null}">
-                        <h:inputText readonly="true" disabled="true" value="#{personBean.currentPerson.id}"/>
-                    </h:panelGroup>
-                </h:panelGroup>
-                <h:outputLabel value="#{msg['person.firstName']}"/>
-                <h:inputText value="#{personBean.currentPerson.firstName}"/>
-                <h:outputLabel value="#{msg['person.lastName']}"/>
-                <h:inputText value="#{personBean.currentPerson.lastName}"/>                
-            </h:panelGrid>           
-            <h:commandButton id="reset" value="#{msg['button.label.reset']}" type="reset" />
-            <h:commandButton id="submit" value="#{msg['button.label.submit']}" action="#{personBean.save()}" type="submit" />
-            <h:button id="cancel" value="#{msg['button.label.cancel']}" outcome="index.xhtml"/>  
-        </h:form>   
+                <h:form>
+                    <h:panelGrid border="0" columns="2">
+                        <h:panelGroup id="idOut">
+                            <h:panelGroup rendered="#{personBean.id != null}">
+                                <h:outputLabel value="#{msg['person.id']}"/>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        <h:panelGroup id="idIn">
+                            <h:panelGroup rendered="#{personBean.id != null}">
+                                <h:inputText readonly="true" disabled="true" value="#{personBean.currentPerson.id}"/>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        <h:outputLabel value="#{msg['person.firstName']}"/>
+                        <h:inputText value="#{personBean.currentPerson.firstName}"/>
+                        <h:outputLabel value="#{msg['person.lastName']}"/>
+                        <h:inputText value="#{personBean.currentPerson.lastName}"/>                
+                    </h:panelGrid>           
+                    <h:commandButton id="reset" value="#{msg['button.label.reset']}" type="reset" />
+                    <h:commandButton id="submit" value="#{msg['button.label.submit']}" action="#{personBean.save()}" type="submit" />
+                    <h:button id="cancel" value="#{msg['button.label.cancel']}" outcome="index.xhtml"/>  
+                </h:form>   
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
